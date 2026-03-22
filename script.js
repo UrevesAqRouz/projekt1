@@ -30,10 +30,19 @@ let currentLang = 'ru';
 const toggleLanguage = () => {
     currentLang = currentLang === 'ru' ? 'en' : 'ru';
     console.log('Language switched to:', currentLang);
-    document.querySelector('.banner').textContent = texts[currentLang].title;
-    document.querySelector('.signup-link').textContent = texts[currentLang].signup;
-    document.querySelector('h2').textContent = texts[currentLang].social;
-    document.querySelector('.back-button').textContent = texts[currentLang].back;
+
+    const safeSetText = (selector, text) => {
+        const el = document.querySelector(selector);
+        if (el) {
+            el.textContent = text;
+        }
+    };
+
+    safeSetText('.banner', texts[currentLang].title);
+    safeSetText('.signup-link', texts[currentLang].signup);
+    safeSetText('h2', texts[currentLang].social);
+    safeSetText('.back-button', texts[currentLang].back);
+
     const button = document.getElementById('lang-toggle');
     if (button) {
         const buttonText = currentLang === 'ru' ? 'EN' : 'RU';
