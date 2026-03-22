@@ -176,7 +176,22 @@ a:focus-visible, .button:focus-visible {
     outline-offset: 3px;
 }
 
-button, a {
-    will-change: transform;
+.lang-button {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--button-bg);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(30, 40, 50, 0.5);
 }
 
