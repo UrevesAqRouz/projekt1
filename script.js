@@ -34,9 +34,14 @@ const toggleLanguage = () => {
     document.querySelector('.signup-link').textContent = texts[currentLang].signup;
     document.querySelector('h2').textContent = texts[currentLang].social;
     document.querySelector('.back-button').textContent = texts[currentLang].back;
-    const buttonText = currentLang === 'ru' ? 'EN' : 'RU';
-    console.log('Button text set to:', buttonText);
-    document.getElementById('lang-toggle').textContent = buttonText;
+    const button = document.getElementById('lang-toggle');
+    if (button) {
+        const buttonText = currentLang === 'ru' ? 'EN' : 'RU';
+        console.log('Button text set to:', buttonText);
+        button.textContent = buttonText;
+    } else {
+        console.log('Button not found');
+    }
 };
 
 window.addEventListener('DOMContentLoaded', () => {
