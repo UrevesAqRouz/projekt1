@@ -53,8 +53,17 @@ window.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.button');
     buttons.forEach(btn => animateButton(btn));
 
-    const links = document.querySelectorAll('a[href^="https://"]');
-    links.forEach(link => {
+    // Обработка ссылок-заглушек (href="#" остаются на странице)
+    const placeholderLinks = document.querySelectorAll('a[href="#"]');
+    placeholderLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+        });
+    });
+
+    // Обработка обычных внешних ссылок
+    const externalLinks = document.querySelectorAll('a[href^="https://"]');
+    externalLinks.forEach(link => {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
     });
