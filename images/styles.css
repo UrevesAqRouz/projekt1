@@ -1,0 +1,197 @@
+:root {
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --text-color: #f5f5ff;
+    --overlay: rgba(0, 0, 0, 0.4);
+    --banner-radius: 20px;
+    --banner-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --button-radius: 50px;
+    --button-shadow: 0 8px 20px rgba(30, 40, 50, 0.4);
+    --bg-color: #111;
+    --banner-bg: linear-gradient(45deg, rgba(45, 48, 75, 0.95), rgba(70, 50, 90, 0.95));
+    --button-bg: linear-gradient(45deg, rgba(100, 110, 120, 0.85), rgba(50, 60, 70, 0.95));
+    --signup-bg: linear-gradient(45deg, rgba(150, 145, 190, 0.9), rgba(45, 50, 90, 0.9));
+    --back-bg: linear-gradient(45deg, rgba(80, 90, 100, 0.9), rgba(40, 50, 60, 0.9));
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: var(--bg-color);
+    background-image: var(--page-bg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay);
+    z-index: -1;
+}
+
+body.home {
+    --page-bg: url('images/замок.jpg');
+}
+
+body.links {
+    --page-bg: url('images/кладбище.jpg');
+}
+
+main {
+    width: min(92%, 1100px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+    z-index: 1;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.banner {
+    background: var(--banner-bg);
+    color: var(--text-color);
+    padding: 50px 30px;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    border-radius: var(--banner-radius);
+    box-shadow: var(--banner-shadow);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 820px;
+}
+
+h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3.5vw, 3rem);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 540px;
+}
+
+li {
+    margin: 12px 0;
+}
+
+a.button, .signup-link, .back-button {
+    display: inline-block;
+    border-radius: var(--button-radius);
+    box-shadow: var(--button-shadow);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.signup-link {
+    background: var(--signup-bg);
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    padding: 18px 36px;
+}
+
+.button {
+    background: var(--button-bg);
+    padding: 12px 28px;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+}
+
+.button:hover,
+.signup-link:hover,
+.back-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(30, 40, 50, 0.7);
+    filter: brightness(1.05);
+}
+
+.back-button {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    background: var(--back-bg);
+    padding: 10px 18px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    main {
+        padding: 30px 16px;
+    }
+
+    .banner {
+        padding: 40px 24px;
+    }
+
+    .back-button {
+        bottom: 12px;
+        left: 12px;
+        padding: 8px 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+a:focus-visible, .button:focus-visible {
+    outline: 3px solid rgba(180, 180, 255, 0.85);
+    outline-offset: 3px;
+}
+
+.lang-button {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--button-bg);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(30, 40, 50, 0.5);
+}
+
