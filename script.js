@@ -29,7 +29,6 @@ let currentLang = 'ru';
 
 const toggleLanguage = () => {
     currentLang = currentLang === 'ru' ? 'en' : 'ru';
-    console.log('Language switched to:', currentLang);
 
     const safeSetText = (selector, text) => {
         const el = document.querySelector(selector);
@@ -46,10 +45,7 @@ const toggleLanguage = () => {
     const button = document.getElementById('lang-toggle');
     if (button) {
         const buttonText = currentLang === 'ru' ? 'EN' : 'RU';
-        console.log('Button text set to:', buttonText);
         button.textContent = buttonText;
-    } else {
-        console.log('Button not found');
     }
 };
 
