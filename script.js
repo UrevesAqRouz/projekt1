@@ -29,11 +29,14 @@ let currentLang = 'ru';
 
 const toggleLanguage = () => {
     currentLang = currentLang === 'ru' ? 'en' : 'ru';
+    console.log('Language switched to:', currentLang);
     document.querySelector('.banner').textContent = texts[currentLang].title;
     document.querySelector('.signup-link').textContent = texts[currentLang].signup;
     document.querySelector('h2').textContent = texts[currentLang].social;
     document.querySelector('.back-button').textContent = texts[currentLang].back;
-    document.getElementById('lang-toggle').textContent = currentLang === 'ru' ? 'EN' : 'RU';
+    const buttonText = currentLang === 'ru' ? 'EN' : 'RU';
+    console.log('Button text set to:', buttonText);
+    document.getElementById('lang-toggle').textContent = buttonText;
 };
 
 window.addEventListener('DOMContentLoaded', () => {
